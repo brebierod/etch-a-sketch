@@ -29,10 +29,10 @@ function makeRows(num) {
 
 function makeSquares(num) {
 
-    addRows: for (let j = 0; j < num; j++) {
+    targetRows: for (let j = 0; j < num; j++) {
         const target = document.getElementById(`${j + 1}`);
-        Squares: for (let i = 0; i < num; i++) {
-            const square = document.createElement("div");
+        addSquares: for (let i = 0; i < num; i++) {
+            let square = document.createElement("div");
             square.setAttribute("style", "outline-color: lightblue; outline-style: solid; outline-width: 1px; width: auto; height: auto; background-color: black; opacity: 0");
             square.style.height = 800 / num + "px";
             square.style.width = 800 / num + "px";
@@ -44,36 +44,39 @@ function makeSquares(num) {
             target.appendChild(square);
         }
     }
-
 }
 
-function addRestartButton() {
-    let underGrid = document.querySelector("body");
-    underGrid.setAttribute("style", "display: flex; flex-direction: column; align-content: center")
-    let restartBtn = document.createElement("button");
-    restartBtn.setAttribute("style", "margin-top: 50px; padding: 12px 24px; text-align: center; color: darkred; width: 25%; align-self: center");
-    restartBtn.textContent = "RESTART";
-    restartBtn.addEventListener("click", (e) => {
-
-    })
-    underGrid.appendChild(restartBtn);
+function useEtchASketch(num) {
+    makeRows(num);
+    makeSquares(num);
 }
 
-function useEtchASketch(num1, num2) {
-    makeRows(num1);
-    makeSquares(num2);
-    addRestartButton();
+function restartEtchASketch(num) {
+    if (num >= 1 && num <= 100) {
+        underGrid.removeChild(body);
+        body = document.createElement("div");
+        body.setAttribute("id", "grid");
+        body.style.height = "800px";
+        underGrid.appendChild(body);
+        underGrid.appendChild(restartBtn);
+        rows = [];
+        squares = [];
+        useEtchASketch(num);
+    }
+    else if (num < 1 || num > 100) {
+        alert(`Try again. You typed ${num}. Number must be between 1 and 100.`);
+    }
 }
 
+let underGrid = document.querySelector("body");
+underGrid.setAttribute("style", "display: flex; flex-direction: column; align-content: center")
+let restartBtn = document.createElement("button");
+restartBtn.setAttribute("style", "margin-top: 50px; padding: 12px 24px; text-align: center; color: darkred; width: 25%; align-self: center");
+restartBtn.textContent = "RESTART";
+restartBtn.addEventListener("click", (e) => {
+    const pixels = prompt("What pixel height would you like your drawing to be? (1 - 100)");
+    restartEtchASketch(pixels);
+})
+underGrid.appendChild(restartBtn);
 
-let height = prompt("What height would you like your drawing to be? (1 - 100)")
-let width = height;
-
-useEtchASketch(height, width);
-
-
-//Create 1 square
-//Iterate 16 squares per row
-//Append to row 1 
-//Repeat until all rows are filled
-//Append to body
+useEtchASketch(4, 4);

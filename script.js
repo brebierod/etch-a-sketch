@@ -1,5 +1,6 @@
 body = document.getElementById("grid");
-body.style.height = "800px";
+let apsectRatio = 400;
+body.style.height = apsectRatio + "px";
 let rows = [];
 let squares = [];
 //Create 1 row
@@ -16,7 +17,8 @@ function makeRow() {
 function makeRows(num) {
     for (let i = 0; i < num; i++) {
         const duplicate = document.createElement("div");
-        duplicate.setAttribute("style", "width: 800px; height: auto; background-color: beige; display: flex; justify-content: space-between");
+        duplicate.setAttribute("style", "height: auto; background-color: beige; display: flex; justify-content: space-between");
+        duplicate.style.width = apsectRatio + "px";
         duplicate.setAttribute("id", `${[i + 1]}`)
         rows.push(duplicate);
     }
@@ -34,8 +36,8 @@ function makeSquares(num) {
         addSquares: for (let i = 0; i < num; i++) {
             let square = document.createElement("div");
             square.setAttribute("style", "outline-color: lightblue; outline-style: solid; outline-width: 1px; width: auto; height: auto; background-color: black; opacity: 0");
-            square.style.height = 800 / num + "px";
-            square.style.width = 800 / num + "px";
+            square.style.height = apsectRatio / num + "px";
+            square.style.width = apsectRatio / num + "px";
             square.setAttribute("class", "square");
             square.addEventListener("mouseover", (e) => {
                 square.style.opacity = +square.style.opacity + 0.1;
@@ -56,7 +58,7 @@ function restartEtchASketch(num) {
         underGrid.removeChild(body);
         body = document.createElement("div");
         body.setAttribute("id", "grid");
-        body.style.height = "800px";
+        body.style.height = "500px";
         underGrid.appendChild(body);
         underGrid.appendChild(restartBtn);
         rows = [];

@@ -79,4 +79,7 @@ restartBtn.addEventListener("click", (e) => {
 })
 underGrid.appendChild(restartBtn);
 
-useEtchASketch(4, 4);
+
+
+
+useEtchASketch(100, 100);

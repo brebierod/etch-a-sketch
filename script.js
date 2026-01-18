@@ -28,22 +28,25 @@ function makeRows(num) {
 };
 
 function makeSquares(num) {
-    
+
     addRows: for (let j = 0; j < num; j++) {
         const target = document.getElementById(`${j + 1}`);
-       Squares: for (let i = 0; i < num; i++) {
-        const square = document.createElement("div");
-        square.setAttribute("style", "outline-color: lightblue; outline-style: solid; outline-width: 1px; width: auto; height: auto; background-color: black; opacity: 0");
-       square.style.height = 800 / num + "px";
-       square.style.width = 800 / num + "px";
-        square.setAttribute("class", "square");
-       square.addEventListener("mouseover", (e) => {
-            square.style.opacity += square.style.opacity + 0.1;
-       });
-        target.appendChild(square);
+        Squares: for (let i = 0; i < num; i++) {
+            const square = document.createElement("div");
+            square.setAttribute("style", "outline-color: lightblue; outline-style: solid; outline-width: 1px; width: auto; height: auto; background-color: black; opacity: 0");
+            square.style.height = 800 / num + "px";
+            square.style.width = 800 / num + "px";
+            square.setAttribute("class", "square");
+            square.addEventListener("mouseover", (e) => {
+                square.style.opacity = +square.style.opacity + 0.1;
+            })
+            target.appendChild(square);
+        };
     };
-    };
+
 };
+
+
 
 makeRows(55);
 makeSquares(64);

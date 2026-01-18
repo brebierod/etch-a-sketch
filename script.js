@@ -1,4 +1,4 @@
-body = document.querySelector("body");
+body = document.getElementById("grid");
 body.style.height = "800px";
 let rows = [];
 let squares = [];
@@ -39,17 +39,39 @@ function makeSquares(num) {
             square.setAttribute("class", "square");
             square.addEventListener("mouseover", (e) => {
                 square.style.opacity = +square.style.opacity + 0.1;
-            })
+            });
+            //Throws error but works as intended
             target.appendChild(square);
-        };
-    };
+        }
+    }
 
-};
+}
+
+function addRestartButton() {
+    let underGrid = document.querySelector("body");
+    underGrid.setAttribute("style", "display: flex; flex-direction: column; align-content: center")
+    let restartBtn = document.createElement("button");
+    restartBtn.setAttribute("style", "margin-top: 50px; padding: 12px 24px; text-align: center; color: darkred; width: 25%; align-self: center");
+    restartBtn.textContent = "RESTART";
+    restartBtn.addEventListener("click", (e) => {
+
+    })
+    underGrid.appendChild(restartBtn);
+}
+
+function useEtchASketch(num1, num2) {
+    makeRows(num1);
+    makeSquares(num2);
+    addRestartButton();
+}
 
 
+let height = prompt("What height would you like your drawing to be? (1 - 100)")
+let width = height;
 
-makeRows(55);
-makeSquares(64);
+useEtchASketch(height, width);
+
+
 //Create 1 square
 //Iterate 16 squares per row
 //Append to row 1 

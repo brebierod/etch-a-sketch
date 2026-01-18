@@ -27,17 +27,15 @@ function makeRows() {
 };
 
 function makeSquares() {
-    Squares: for (let i = 0; i < 16; i++) {
+    
+    addRows: for (let j = 0; j < 16; j++) {
+        const target = document.getElementById(`${j + 1}`);
+       Squares: for (let i = 0; i < 16; i++) {
         const square = document.createElement("div");
         square.setAttribute("style", "outline-color: lightblue; outline-style: solid; outline-width: 1px; width: 6%; height: 46px; background-color: white");
        square.setAttribute("class", "square");
-        squares.push(square);
+        target.appendChild(square);
     };
-    addRows: for (let j = 0; j < 16; j++) {
-        const target = document.getElementById(`${j + 1}`);
-        squares.forEach( function (item) {
-            target.appendChild(item);
-        });
     };
 };
 

@@ -58,7 +58,7 @@ function restartEtchASketch(num) {
         underGrid.removeChild(body);
         body = document.createElement("div");
         body.setAttribute("id", "grid");
-        body.style.height = "500px";
+        body.style.height = 400 + "px";
         underGrid.appendChild(body);
         underGrid.appendChild(restartBtn);
         rows = [];
@@ -73,7 +73,7 @@ function restartEtchASketch(num) {
 let underGrid = document.querySelector("body");
 underGrid.setAttribute("style", "display: flex; flex-direction: column; align-content: center")
 let restartBtn = document.createElement("button");
-restartBtn.setAttribute("style", "margin-top: 50px; padding: 12px 24px; text-align: center; color: darkred; width: 25%; align-self: center");
+restartBtn.setAttribute("style", "margin-top: 50px; padding: 12px 24px; text-align: center; color: darkred; width: 30%; align-self: center");
 restartBtn.textContent = "RESTART";
 restartBtn.addEventListener("click", (e) => {
     const pixels = prompt("What pixel height would you like your drawing to be? (1 - 100)");

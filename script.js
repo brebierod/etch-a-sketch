@@ -1,24 +1,33 @@
+//Establishing grid and size
 body = document.getElementById("grid");
-let apsectRatio = 400;
-body.style.height = apsectRatio + "px";
+let aspectRatio = ""
+function checkScreenSize() {
+    if (window.innerWidth <= 500) {
+        aspectRatio = +(window.innerWidth) - 24;
+    } else if (window.innerWidth > 500 && window.innerWidth < 800) {
+        aspectRatio = window.innerWidth - 50;
+    } else if (window.innerWidth >= 800 ) {
+        aspectRatio = 800;
+    }
+}
+checkScreenSize();
+body.style.height = aspectRatio + "px";
 let rows = [];
 let squares = [];
-//Create 1 row
+
+
+
 function makeRow() {
     const row = document.createElement("div");
 
     return row;
 }
 
-//Specify row height and width
-
-//Iterate 16 rows
-
 function makeRows(num) {
     for (let i = 0; i < num; i++) {
         const duplicate = document.createElement("div");
         duplicate.setAttribute("style", "height: auto; background-color: beige; display: flex; justify-content: space-between");
-        duplicate.style.width = apsectRatio + "px";
+        duplicate.style.width = aspectRatio + "px";
         duplicate.setAttribute("id", `${[i + 1]}`)
         rows.push(duplicate);
     }
@@ -36,8 +45,8 @@ function makeSquares(num) {
         addSquares: for (let i = 0; i < num; i++) {
             let square = document.createElement("div");
             square.setAttribute("style", "outline-color: lightblue; outline-style: solid; outline-width: 1px; width: auto; height: auto; background-color: black; opacity: 0");
-            square.style.height = apsectRatio / num + "px";
-            square.style.width = apsectRatio / num + "px";
+            square.style.height = aspectRatio / num + "px";
+            square.style.width = aspectRatio / num + "px";
             square.setAttribute("class", "square");
             square.addEventListener("mouseover", (e) => {
                 square.style.opacity = +square.style.opacity + 0.1;
@@ -70,6 +79,7 @@ function restartEtchASketch(num) {
     }
 }
 
+//Restart button to choose new grid
 let underGrid = document.querySelector("body");
 underGrid.setAttribute("style", "display: flex; flex-direction: column; align-content: center")
 let restartBtn = document.createElement("button");
@@ -81,7 +91,5 @@ restartBtn.addEventListener("click", (e) => {
 })
 underGrid.appendChild(restartBtn);
 
-
-
-
+console.log(aspectRatio);
 useEtchASketch(100, 100);

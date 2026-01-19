@@ -48,7 +48,7 @@ function makeSquares(num) {
             square.style.height = aspectRatio / num + "px";
             square.style.width = aspectRatio / num + "px";
             square.setAttribute("class", "square");
-            square.addEventListener("mouseover", (e) => {
+            square.addEventListener("pointerover", (e) => {
                 square.style.opacity = +square.style.opacity + 0.1;
             });
             //Throws error but works as intended

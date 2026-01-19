@@ -67,7 +67,7 @@ function restartEtchASketch(num) {
         underGrid.removeChild(body);
         body = document.createElement("div");
         body.setAttribute("id", "grid");
-        body.style.height = 400 + "px";
+        body.style.height = aspectRatio + "px";
         underGrid.appendChild(body);
         underGrid.appendChild(restartBtn);
         rows = [];
